@@ -1,0 +1,14 @@
+{
+  "name": "boid",
+  "version": "0.1.0",
+  "files": [
+    "boidlib_bg.wasm",
+    "boidlib.js",
+    "boidlib.d.ts"
+  ],
+  "module": "boidlib.js",
+  "types": "boidlib.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
