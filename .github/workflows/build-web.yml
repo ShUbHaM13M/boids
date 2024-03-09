@@ -31,3 +31,5 @@ jobs:
         with:
           branch: gh-pages
           folder: web
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
