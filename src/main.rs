@@ -31,25 +31,10 @@ async fn main() {
     boids.matching_factor = matching_factor;
     boids.randomize(screen_width(), screen_height());
 
-    // TODO: Abstract this
-    // for boid in &mut boids.children {
-    //     boid.set_position(
-    //         rand::gen_range(0.0, screen_width()),
-    //         rand::gen_range(0.0, screen_height()),
-    //     );
-    //     boid.set_velocity(rand::gen_range(0.0, 1.0), rand::gen_range(0.0, 1.0));
-    //     boid.velocity.mul(rand::gen_range(2.0, 4.0));
-    //     boid.visual_range = 40.0;
-    //     boid.protected_range = 8.0;
-    //     boid.turn_factor = 0.2;
-    //     boid.max_speed = MAX_SPEED;
-    //     boid.max_force = MAX_FORCE;
-    // }
-
     loop {
         clear_background(background);
 
-        for boid in &boids.children {
+        for boid in &boids.get_children() {
             draw_circle(boid.position.x, boid.position.y, 4.0, WHITE);
         }
 

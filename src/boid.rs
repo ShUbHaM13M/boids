@@ -1,6 +1,9 @@
 use crate::vec::Vector2;
+use serde::{Deserialize, Serialize};
+use wasm_bindgen::prelude::*;
 
-#[derive(Debug, Default, Clone, Copy, PartialEq, PartialOrd)]
+#[wasm_bindgen]
+#[derive(Debug, Default, Clone, Copy, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub struct Boid {
     pub position: Vector2,
     pub velocity: Vector2,

@@ -1,9 +1,14 @@
-#[derive(Debug, Default, Clone, Copy, PartialEq, PartialOrd)]
+use serde::{Deserialize, Serialize};
+use wasm_bindgen::prelude::wasm_bindgen;
+
+#[wasm_bindgen]
+#[derive(Debug, Default, Clone, Copy, PartialEq, PartialOrd, Serialize, Deserialize)]
 pub struct Vector2 {
     pub x: f32,
     pub y: f32,
 }
 
+#[wasm_bindgen]
 impl Vector2 {
     pub fn add_vec(&mut self, other: Vector2) {
         self.x += other.x;

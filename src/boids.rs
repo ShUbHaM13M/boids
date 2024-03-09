@@ -1,4 +1,6 @@
 use crate::boid::Boid;
+use serde::{Deserialize, Serialize};
+use wasm_bindgen::prelude::wasm_bindgen;
 
 #[cfg(target_arch = "wasm32")]
 use crate::web::rand_range;
@@ -6,9 +8,10 @@ use crate::web::rand_range;
 #[cfg(not(target_arch = "wasm32"))]
 use crate::native::rand_range;
 
-#[derive(Default, Debug)]
+#[wasm_bindgen]
+#[derive(Default, Debug, Serialize, Deserialize)]
 pub struct Boids {
-    pub children: Vec<Boid>,
+    children: Vec<Boid>,
     pub avoid_factor: f32,
     pub matching_factor: f32,
     pub centering_factor: f32,
@@ -16,12 +19,17 @@ pub struct Boids {
     pub max_speed: f32,
 }
 
+#[wasm_bindgen]
 impl Boids {
     pub fn new(count: usize) -> Self {
         Self {
             children: vec![Boid::default(); count],
             ..Default::default()
         }
+    }
+
+    pub fn get_children(&self) -> Vec<Boid> {
+        self.children.clone()
     }
 
     pub fn randomize(&mut self, screen_width: f32, screen_height: f32) {
