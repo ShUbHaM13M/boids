@@ -3,7 +3,8 @@ name: Build and Deploy wasm
 on:
   push:
     branches:
-      - main
+      - master
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
