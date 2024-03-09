@@ -21,6 +21,7 @@ pub struct Boids {
 
 #[wasm_bindgen]
 impl Boids {
+    #[wasm_bindgen(constructor)]
     pub fn new(count: usize) -> Self {
         Self {
             children: vec![Boid::default(); count],
@@ -38,7 +39,7 @@ impl Boids {
                 rand_range(0.0, screen_width),
                 rand_range(0.0, screen_height),
             );
-            child.set_velocity(rand_range(0.0, 1.0), rand_range(0.0, 1.0));
+            child.set_velocity(rand_range(0.1, 1.0), rand_range(0.1, 1.0));
             child.velocity.mul(rand_range(2.0, 4.0));
             child.visual_range = 40.0;
             child.protected_range = 8.0;
