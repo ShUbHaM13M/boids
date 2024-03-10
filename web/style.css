@@ -1,0 +1,77 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-canvas-bg: #121212;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 100svh;
+}
+
+body.show-controls {
+  display: grid;
+  place-items: center;
+  padding: 1em;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: 100%;
+  min-height: 100svh;
+}
+body.show-controls .container {
+  max-width: 600px;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--color-canvas-bg);
+}
+body.show-controls canvas {
+  border-radius: 4px;
+}
+
+.controls {
+  display: none;
+}
+body.show-controls .controls {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+@media screen and (min-width: 600px) {
+  body.show-controls .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}
+
+button {
+  all: unset;
+  background-color: #19d645;
+  color: var(--color-canvas-bg);
+  border-radius: 4px;
+  padding: 0.6em 1em;
+  max-width: fit-content;
+  cursor: pointer;
+}
+button:hover,
+button:focus-visible {
+  filter: brightness(80%);
+}
